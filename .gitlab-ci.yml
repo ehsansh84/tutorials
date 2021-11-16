@@ -2,7 +2,7 @@ stages:
   - sync
 test:
   stage: sync
-  image: kovetskiy/mark
+  image: shirzadi/md2conf
   script: |
       for file in $(find -type f -name '*.md'); do
         echo "> Sync $file";
