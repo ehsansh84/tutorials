@@ -6,6 +6,6 @@ test:
   script: |
       for file in $(find -type f -name '*.md'); do
         echo "> Sync $file";
-        mark -u ${{ secrets.CONFLUENCE_USER }} -p ${{ secrets.CONFLUENCE_PASSWORD }} -b ${{ secrets.CONFLUENCE_URL }} -f $file || exit 1;
+        mark -u $CONFLUENCE_USER -p $CONFLUENCE_PASSWORD -b $CONFLUENCE_URL -f $file || exit 1;
         echo;
       done
