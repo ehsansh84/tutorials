@@ -1,0 +1,11 @@
+stages:
+  - sync
+test:
+  stage: sync
+  image: kovetskiy/mark
+  script: |
+      for file in $(find -type f -name '*.md'); do
+        echo "> Sync $file";
+        mark -u ${{ secrets.CONFLUENCE_USER }} -p ${{ secrets.CONFLUENCE_PASSWORD }} -b ${{ secrets.CONFLUENCE_URL }} -f $file || exit 1;
+        echo;
+      done
