@@ -1,16 +1,9 @@
 stages:
   - sync
-test:
+syncing:
   stage: sync
   image: shirzadi/md2conf
   script: |
-      echo "HI EHSAN"
-      git show $CI_COMMIT_SHA --name-status
-      echo "============================================"
-      git show $CI_COMMIT_SHA --name-status | grep "^[AM]\s.*"
-      echo "============================================"
-      git show $CI_COMMIT_SHA --name-status | grep "^[AM]\s.*" | awk '{print $2}'
-      echo "============================================"
       for file in $(git show $CI_COMMIT_SHA --name-status | grep "^[AM]\s.*md" | awk '{print $2}'); do
         echo "> Sync $file";
         mark -u $CONFLUENCE_USER -p $CONFLUENCE_PASSWORD -b $CONFLUENCE_URL -f $file || exit 1;

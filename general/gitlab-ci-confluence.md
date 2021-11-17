@@ -21,7 +21,7 @@ test:
   stage: sync
   image: shirzadi/md2conf
   script: |
-      for file in $(find -type f -name '*.md'); do
+      for file in $(git show $CI_COMMIT_SHA --name-status | grep "^[AM]\s.*md" | awk '{print $2}'); do
         echo "> Sync $file";
         mark -u $CONFLUENCE_USER -p $CONFLUENCE_PASSWORD -b $CONFLUENCE_URL -f $file || exit 1;
         echo;
