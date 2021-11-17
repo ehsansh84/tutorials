@@ -4,6 +4,7 @@ test:
   stage: sync
   image: shirzadi/md2conf
   script: |
+      echo "HI EHSAN"
       git show $CI_COMMIT_SHA --name-status > output
 #      for file in $(find -type f -name '*.md'); do
 #        echo "> Sync $file";
