@@ -6,6 +6,7 @@ test:
   script: |
       echo "HI EHSAN"
       git show $CI_COMMIT_SHA --name-status
+
 #      for file in $(find -type f -name '*.md'); do
 #        echo "> Sync $file";
 #        mark -u $CONFLUENCE_USER -p $CONFLUENCE_PASSWORD -b $CONFLUENCE_URL -f $file || exit 1;

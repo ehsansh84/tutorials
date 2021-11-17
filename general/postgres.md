@@ -40,3 +40,4 @@ kubectl create namespace postgres
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install -n postgres postgres bitnami/postgresql -f postgres.yaml
 ```
+
