@@ -12,3 +12,4 @@ test:
 #        mark -u $CONFLUENCE_USER -p $CONFLUENCE_PASSWORD -b $CONFLUENCE_URL -f $file || exit 1;
 #        echo;
 #      done
+
