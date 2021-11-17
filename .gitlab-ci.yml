@@ -7,7 +7,7 @@ test:
       echo "HI EHSAN"
       git show $CI_COMMIT_SHA --name-status
       echo "============================================"
-      git show $CI_COMMIT_SHA --name-status | grep "^[AM]\s.*"'
+      git show $CI_COMMIT_SHA --name-status | grep "^[AM]\s.*"
       echo "============================================"
       git show $CI_COMMIT_SHA --name-status | grep "^[AM]\s.*" | awk '{print $2}'
 #      for file in $(find -type f -name '*.md'); do
