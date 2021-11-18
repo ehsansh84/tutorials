@@ -51,3 +51,17 @@ rules:
 ```
 kubectl create rolebinding ehsan-cman-rolebinding --role=ehsan-cman --user=ehsan --namespace cman 
 ```
+
+To put it together simply run this bash:
+```shell
+NAMESPACE=namespace
+USER=user
+SERVER_IP=server_ip
+openssl genrsa -out $USER.key 2048
+openssl req -new -key $USER.key -out $USER.csr -subj "/CN=$USER/O=$NAMESPACE"
+scp ubuntu@$SERVER_IP:/etc/kubernetes/pki/ca.{crt,key} .
+openssl x509 -req -in $USER.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out $USER.crt -days 365
+kubectl --kubeconfig $USER.kubeconfig config set-cluster kubernetes --server https://$SERVER_IP:6443 --certificate-authority=ca.crt
+kubectl --kubeconfig $USER.kubeconfig config set-credentials $USER --client-certificate $USER.crt --client-key $USER.key
+kubectl --kubeconfig $USER.kubeconfig config set-context $USER-kubernetes --cluster kubernetes --namespace $NAMESPACE --user $USER
+```
