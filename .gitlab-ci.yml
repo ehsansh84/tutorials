@@ -1,5 +1,6 @@
 stages:
   - sync
+  - version
 syncing:
   stage: sync
   image: shirzadi/md2conf
@@ -9,6 +10,9 @@ syncing:
         mark -u $CONFLUENCE_USER -p $CONFLUENCE_PASSWORD -b $CONFLUENCE_URL -f $file || exit 1;
         echo;
       done
-#      for file in $(find -type f -name '*.md'); do
-
-
+version:
+  stage: version
+  image: amirfatemi/gitlab-version:latest
+  script:
+    - release changelog
+    - release commit-and-tag CHANGELOG.md
