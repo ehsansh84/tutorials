@@ -29,3 +29,4 @@ kubectl logs --tail=20 POD_NAME
 ```
 kubectl config view
 ```
+
