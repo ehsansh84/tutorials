@@ -12,7 +12,7 @@ syncing:
       done
 version:
   stage: version
-  image: amirfatemi/gitlab-version:latest
+  image: shirzadi/gitlab-semver:latest
   script:
     - release changelog
     - release commit-and-tag CHANGELOG.md
