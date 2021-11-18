@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.2.1
+2021-11-18
+
+### Fixes
+
+- cheatsheet updated (76f093cde1a25046fe1d7e4b6bced210f0983d50)
+
 ## 0.2.0
 2021-11-18
 
