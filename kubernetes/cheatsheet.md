@@ -9,7 +9,6 @@ kubectl port-forward POD_NAME LOCAL_PORT:POD_PORT
 ```
 kubectl label node NODE_NAME node-role.kubernetes.io/label=
 ```
-
 #### Remove Label from nodes:
 ```
 kubectl label node NODE_NAME node-role.kubernetes.io/label-
