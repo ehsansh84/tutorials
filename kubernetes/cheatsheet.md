@@ -26,3 +26,7 @@ kubectl create secret tls SECRET_NAME --cert=path/to/cert/file --key=path/to/key
 ```
 kubectl logs --tail=20 POD_NAME
 ```
+#### See kubernetes config:
+```
+kubectl config view
+```
