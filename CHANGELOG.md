@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.2.0
+2021-11-18
+
+### Features
+
+- Kubernetes cheatsheet added (8fece3dc1e405ffe6740d3293750909771d57caa)
+
 ## 0.1.0
 2021-11-18
 
