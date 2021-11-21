@@ -2,6 +2,13 @@
 
 <!--- next entry here -->
 
+## 0.2.2
+2021-11-18
+
+### Fixes
+
+- put it together script to rbac (bd5a6d67d89e8a04ec52e72c4151a8a7a0071f92)
+
 ## 0.2.1
 2021-11-18
 
