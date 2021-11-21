@@ -32,6 +32,12 @@ kubectl --kubeconfig ehsan.kubeconfig config set-cluster kubernetes --server htt
 kubectl --kubeconfig ehsan.kubeconfig config set-credentials ehsan --client-certificate ehsan.crt --client-key ehsan.key
 kubectl --kubeconfig ehsan.kubeconfig config set-context ehsan-kubernetes --cluster kubernetes --namespace cman --user ehsan
 ```
+You can use `--embed certs=true` to embed certs in kubeconfig like this:
+```
+kubectl --kubeconfig ehsan.kubeconfig config set-cluster kubernetes --server https://SERVER_IP:6443 --certificate-authority=ca.crt --embed certs=true
+kubectl --kubeconfig ehsan.kubeconfig config set-credentials ehsan --client-certificate ehsan.crt --client-key ehsan.key --embed certs=true
+```
+
 In ehsan.kubeconfig set `current-context` values to `ehsan-kubernetes`
 If try a send a request using this kubeconfig an error will be raise like this:
 `Error from server (Forbidden): pods is forbidden: User "ehsan" cannot list resource "pods" in API group "" in the namespace "cman"`
@@ -46,6 +52,9 @@ rules:
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods"]
   verbs: ["get", "watch", "list"]
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods/exec"]
+  verbs: ["create"]
 ```
 ### Step 4:
 ```
