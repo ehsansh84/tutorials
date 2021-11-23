@@ -109,3 +109,9 @@ Finally, apply your manifests:
 kubectl apply -f auth.yaml
 kubectl apply -f ingressroute.yaml
 ```
+
+#### Refrences:
+- [How to configure Traefik on Kubernetes with Cert-manager?](https://www.padok.fr/en/blog/traefik-kubernetes-certmanager)
+- [Basic Authentication](https://github.com/kubernetes/ingress-nginx/blob/main/docs/examples/auth/basic/README.md)
+
+
