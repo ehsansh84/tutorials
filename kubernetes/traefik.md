@@ -109,9 +109,12 @@ Finally, apply your manifests:
 kubectl apply -f auth.yaml
 kubectl apply -f ingressroute.yaml
 ```
+### Use Cert-manager to manage certificates in your cluster
+
 
 #### Refrences:
 - [How to configure Traefik on Kubernetes with Cert-manager?](https://www.padok.fr/en/blog/traefik-kubernetes-certmanager)
 - [Basic Authentication](https://github.com/kubernetes/ingress-nginx/blob/main/docs/examples/auth/basic/README.md)
+- [Cloudflare](https://cert-manager.io/docs/configuration/acme/dns01/cloudflare/)
 
 
