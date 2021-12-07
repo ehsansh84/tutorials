@@ -4,6 +4,7 @@ metadata:
   namespace: anjo
   name: anjo
 rules:
-- apiGroups: ["", "extensions", "apps"] # "" indicates the core API group
+#- apiGroups: ["", "extensions", "apps"] # "" indicates the core API group
+- apiGroups: [""] # "" indicates the core API group
   resources: ["deployments", "replicasets", "pods", "services", "ingresses"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"] # You can also use ["*"]
