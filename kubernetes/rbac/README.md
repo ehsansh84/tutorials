@@ -46,8 +46,8 @@ If try a send a request using this kubeconfig an error will be raise like this:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  namespace: cman
-  name: ehsan-cman
+  namespace: myns
+  name: ehsan-role
 rules:
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods"]
@@ -58,7 +58,19 @@ rules:
 ```
 ### Step 4:
 ```
-kubectl create rolebinding ehsan-cman-rolebinding --role=ehsan-cman --user=ehsan --namespace cman 
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: ehsan-rolebinding
+  namespace: myns
+subjects:
+- kind: User
+  name: ehsan
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: ehsan-role
+  apiGroup: rbac.authorization.k8s.io 
 ```
 
 To put it together simply run this bash:
@@ -74,3 +86,8 @@ kubectl --kubeconfig $USER.kubeconfig config set-cluster kubernetes --server htt
 kubectl --kubeconfig $USER.kubeconfig config set-credentials $USER --client-certificate $USER.crt --client-key $USER.key
 kubectl --kubeconfig $USER.kubeconfig config set-context $USER-kubernetes --cluster kubernetes --namespace $NAMESPACE --user $USER
 ```
+
+
+
+#### Refrences:
+- [Configuring permissions in Kubernetes with RBAC](https://medium.com/containerum/configuring-permissions-in-kubernetes-with-rbac-a456a9717d5d)
