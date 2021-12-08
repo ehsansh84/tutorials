@@ -28,3 +28,10 @@ KEYCLOAK_URL: kc.domain.com
   - If you want to automatically get username from token:
     - Set `Automatic onboarding` to `Checked`
     - Set `Username Claim` to `preferred_username`
+
+
+
+
+
+#### Refrences:
+- [Harbor Keycloak Auth](https://blog.lazybit.ch/harbor-keycloak-auth/)
