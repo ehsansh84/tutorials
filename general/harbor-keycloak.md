@@ -41,6 +41,8 @@ KEYCLOAK_URL: kc.domain.com
 - Set `Mapper Type` to `User Clients Role`
 - Set `Token Claim Name` to name you specified in Step 2.3 Group Claim Name
 - Set 'Client ID' to `harbor` as you specified in Step2.3 OIDC Client ID
-
+- Go to `Users/Role Mappings`
+- Set `Clients Roles` to your_client
+- Assign roles from Available roles 
 #### Refrences:
 - [Harbor Keycloak Auth](https://blog.lazybit.ch/harbor-keycloak-auth/)
