@@ -43,6 +43,13 @@ KEYCLOAK_URL: kc.domain.com
 - Set 'Client ID' to `harbor` as you specified in Step2.3 OIDC Client ID
 - Go to `Users/Role Mappings`
 - Set `Clients Roles` to your_client
-- Assign roles from Available roles 
+- Assign roles from Available roles
+
+### Step5: Create a robot to use from CLI
+- Go to `Administration\Robot Accounts\New Robot Account`
+- Set `name` to your desired name
+- Set `Expiration time`
+- Set projects to access
+
 #### Refrences:
 - [Harbor Keycloak Auth](https://blog.lazybit.ch/harbor-keycloak-auth/)
