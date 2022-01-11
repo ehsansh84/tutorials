@@ -66,3 +66,4 @@ ETCDCTL_API=3 etcdctl snapshot save ~/etcd.backup --endpoints=https://127.0.0.1:
 - [Backup and Restore a Kubernetes Master with Kubeadm](https://labs.consol.de/kubernetes/2018/05/25/kubeadm-backup.html)
 - [Backing up etcd](https://docs.openshift.com/container-platform/4.7/backup_and_restore/control_plane_backup_and_restore/backing-up-etcd.html)
 - [Restoring to a previous cluster state](https://docs.openshift.com/container-platform/4.7/backup_and_restore/control_plane_backup_and_restore/disaster_recovery/scenario-2-restoring-cluster-state.html#dr-restoring-cluster-state)
+- [ETCD Backup in Kubernetes](https://www.youtube.com/watch?v=fnfLGOHNlWs)
