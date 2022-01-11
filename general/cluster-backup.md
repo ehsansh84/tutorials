@@ -37,6 +37,20 @@ No bucket and provider were specified, no default backup storage location create
 Velero is installed! ⛵ Use 'kubectl logs deployment/velero -n spp-velero' to view the status.
 ```
 
+### How to back up manually?
+#### What Data should be in the Backup?
+There are two data items to be backed up:
+- The root certificate files /etc/kubernetes/pki/ca.crt and /etc/kubernetes/pki/ca.key.
+- The etcd data.  
+Backing up the root certificate is a one-time operation that you do manually after creating the master with kubeadm init. The rest of this post deals with how to back up the etcd data.
+- Install etcdctl using: ` sudo apt-get install -y etcd-client`
+
+#### Tips about an ETCD backup:
+- Back up your cluster’s etcd data regularly and store in a secure location ideally outside the cluster
+- Do not take an etcd backup before the first certificate rotation completes, which occurs 24 hours after installation, otherwise the backup will contain expired certificates.
+- It is also recommended to take etcd backups during non-peak usage hours, as it is a blocking action
+- Back up your cluster’s etcd data by performing a single invocation of the backup script on a control plane host (also known as the master host). Do not take a backup for each control plane host.
+
 #### Refrences:
 - [How To Back Up and Restore a Kubernetes Cluster on DigitalOcean Using Velero
 ?](https://www.digitalocean.com/community/tutorials/how-to-back-up-and-restore-a-kubernetes-cluster-on-digitalocean-using-velero)
@@ -45,4 +59,6 @@ Velero is installed! ⛵ Use 'kubectl logs deployment/velero -n spp-velero' to v
 - [Install and Configure Standalone Velero and Restic on a Tanzu Kubernetes Cluster
 ](https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-A24A6B91-0CDF-4D02-AD08-7BA5EAC25A42.html)
 - [Installing and configuring Velero](https://www.ibm.com/docs/en/spp/10.1.7?topic=support-installing-configuring-velero)
-- 
+- [Backup and Restore a Kubernetes Master with Kubeadm](https://labs.consol.de/kubernetes/2018/05/25/kubeadm-backup.html)
+- [Backing up etcd](https://docs.openshift.com/container-platform/4.7/backup_and_restore/control_plane_backup_and_restore/backing-up-etcd.html)
+- [Restoring to a previous cluster state](https://docs.openshift.com/container-platform/4.7/backup_and_restore/control_plane_backup_and_restore/disaster_recovery/scenario-2-restoring-cluster-state.html#dr-restoring-cluster-state)
