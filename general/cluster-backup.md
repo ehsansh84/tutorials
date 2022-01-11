@@ -51,6 +51,10 @@ Backing up the root certificate is a one-time operation that you do manually aft
 - It is also recommended to take etcd backups during non-peak usage hours, as it is a blocking action
 - Back up your cluster’s etcd data by performing a single invocation of the backup script on a control plane host (also known as the master host). Do not take a backup for each control plane host.
 
+#### Backup an ETCD like this:
+```text
+ETCDCTL_API=3 etcdctl snapshot save ~/etcd.backup --endpoints=https://127.0.0.1:2379 --cacert=/etc/etcd/ca.pem --cert=/etc/etcd/kubernetes.pem --key=/etc/kubernetes/pki/etcd/peer.key
+```
 #### Refrences:
 - [How To Back Up and Restore a Kubernetes Cluster on DigitalOcean Using Velero
 ?](https://www.digitalocean.com/community/tutorials/how-to-back-up-and-restore-a-kubernetes-cluster-on-digitalocean-using-velero)
