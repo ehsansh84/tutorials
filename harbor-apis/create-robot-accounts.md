@@ -73,8 +73,8 @@ Make a `post` request to `/robots` with these params:
           "effect": "string"
         }
       ],
-      "kind": "string",
-      "namespace": "string"
+      "kind": "project",
+      "namespace": "wordpress"
     }
   ]
 }
