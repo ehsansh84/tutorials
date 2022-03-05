@@ -55,6 +55,31 @@ First you should know about list of `resources` and `actions` related.
 - "scanner-pull" => for robot account created by scanner to pull image, bypass the policy check
 - "stop" => for stop scan/scan-all execution
 
+Make a `post` request to `/robots` with these params:
+```json
+{
+  "secret": "string",
+  "disable": true,
+  "name": "string",
+  "level": "string",
+  "duration": 0,
+  "description": "string",
+  "permissions": [
+    {
+      "access": [
+        {
+          "action": "string",
+          "resource": "string",
+          "effect": "string"
+        }
+      ],
+      "kind": "string",
+      "namespace": "string"
+    }
+  ]
+}
+```
+
 #### Refrences:
 - [Harbor source: const.go](https://github.com/goharbor/harbor/blob/5cd5bcaee44e9f57c96ac8327009bcffb95ac7a5/src/common/rbac/const.go)
 
