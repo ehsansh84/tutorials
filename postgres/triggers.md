@@ -48,7 +48,7 @@ CREATE FUNCTION change_trigger() RETURNS trigger AS $$
 $$ LANGUAGE 'plpgsql' SECURITY DEFINER;
 ```
 Apply trigger to table:
-```
+```sql
 CREATE TRIGGER t BEFORE INSERT OR UPDATE OR DELETE ON your_table
         FOR EACH ROW EXECUTE PROCEDURE change_trigger();
 ```
