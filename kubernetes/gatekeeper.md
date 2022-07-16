@@ -32,11 +32,24 @@ There are two types of admission controllers:
 - MutatingAdmissionWebhook => Enforce custom defaults
 - ValidatingAdmissionWebhook =< ٍEnforce custom policies
 
-...
+### How OPA Gatekeeper works
+Gatekeeper acts as a bridge between the Kubernetes API server and OPA.  
+Since Gatekeeper operates through OPA, all policies must be written in Rego. Fortunately, Kubernetes has that covered by using the OPA Constraints Framework.  
 
 ### How is Gatekeeper different from OPA?
 Gatekeeper introduces the following functionality:
 
+### How to use OPA Gatekeeper: a simple scenario
+Install gatekeeper using a manifest:
+```yaml
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/release-3.4/deploy/gatekeeper.yaml
+```
+Or using helm (Recommended):
+```commandline
+helm repo add gatekeeper https://open-policy-agent.github.io/gatekeeper/charts
+helm repo update
+helm install gatekeeper/gatekeeper --name-template=gatekeeper --namespace gatekeeper-system --create-namespace
+```
 
 
 #### Refrences:
