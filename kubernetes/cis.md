@@ -28,6 +28,13 @@ Last thing that you need to do is to move the kube-bench binary to `/usr/local/b
 sudo mv /etc/kube-bench/kube-bench /usr/local/bin
 ```
 You have successfully installed and configured kube-bench, and we are ready to move ahead. To verify the installation, use the command `kube-bench version`
+### Running Kube-Bench via Cli
+Before analysing the output of the previous command, let’s try to understand what are the components of the Kubernetes cluster that kube-bench benchmarks. Essentially, kube-bench will benchmark your configurations of the followings.
+- Control Plane Components
+- Etcd
+- Control Plane Configurations
+- Worker Nodes
+- Policies
 
 #### Refrences:
 - [Kube-Bench](https://earthly.dev/blog/kube-bench/)
