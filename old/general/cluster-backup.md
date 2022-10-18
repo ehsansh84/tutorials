@@ -28,13 +28,13 @@ curl -fsSL -o velero-version-linux-amd64.tar.gz https://github.com/vmware-tanzu/
         --use-volume-snapshots=false \
         --no-default-backup-location \
         --no-secret \
-        --plugins velero/velero-plugin-for-aws:v1.1.0 -n spp-velero
+        --plugins velero/velero-plugin-for-aws:v1.1.0 -n velero
 ```
 When the installation finishes, a message similar to the following message is displayed:
 ```text
 No secret file was specified, no Secret created.
 No bucket and provider were specified, no default backup storage location created.
-Velero is installed! ⛵ Use 'kubectl logs deployment/velero -n spp-velero' to view the status.
+Velero is installed! ⛵ Use 'kubectl logs deployment/velero -n velero' to view the status.
 ```
 
 ### How to back up manually?

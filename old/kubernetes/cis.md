@@ -39,8 +39,3 @@ Before analysing the output of the previous command, let’s try to understand w
 #### Refrences:
 - [Kube-Bench](https://earthly.dev/blog/kube-bench/)
 - [About CIS](https://www.cisecurity.org/about-us)
-- []()
-- []()
-- []()
-
-
