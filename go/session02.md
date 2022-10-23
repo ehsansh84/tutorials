@@ -25,4 +25,3 @@ hello world
 
 ### References: 
 - [Go by Example: Hello World](https://gobyexample.com/hello-world)
-- [Error message "go: go.mod file not found in current directory or any parent directory; see 'go help modules'"](https://stackoverflow.com/questions/66894200/error-message-go-go-mod-file-not-found-in-current-directory-or-any-parent-dire)
