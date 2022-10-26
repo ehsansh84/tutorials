@@ -16,10 +16,18 @@ Cluster Autoscaler increases the size of the cluster when:
 - Check if your cloud provider's quota is big enough before specifying min/max settings for your node pools.
 - Do not run any additional node group autoscalers (especially those from your cloud provider).
 
+### Install `metrics-server` like this:
+```commandline
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+```
 
 ### 
 ### References: 
 - [Frequently Asked Questions](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-is-cluster-autoscaler)
 - [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
 - [How to Test Autoscaling in Kubernetes](https://speedscale.com/how-to-test-kubernetes-autoscaling/)
+- [Kubernetes Metrics Server](https://kubernetes-sigs.github.io/metrics-server/)
+- []()
+- []()
+- []()
 - []()
