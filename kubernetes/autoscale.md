@@ -51,13 +51,15 @@ If you have a cluster with several node types (often also referred to as node gr
 - The Cluster Autoscaler should take less than 30 seconds for a cluster with less than 100 nodes and less than a minute for a cluster with more than 100 nodes.
 - The cloud provider might take 3 to 5 minutes to create the computer resource.
 - The container runtime could take up to 30 seconds to download the container image.
+At worse, it takes about 7 minutes.
 
+> You can cache docker images using a cache tools like [kube-fledged](https://github.com/senthilrch/kube-fledged) to reduce download time. 
 ### References: 
 - [Frequently Asked Questions](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-is-cluster-autoscaler)
 - [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
 - [How to Test Autoscaling in Kubernetes](https://speedscale.com/how-to-test-kubernetes-autoscaling/)
 - [Kubernetes Metrics Server](https://kubernetes-sigs.github.io/metrics-server/)
 - [How the Cluster Autoscaler works in Kubernetes](https://learnk8s.io/kubernetes-autoscaling-strategies#how-the-cluster-autoscaler-works-in-kubernetes)
-- []()
+- [kube-fledged](https://github.com/senthilrch/kube-fledged)
 - []()
 - []()
