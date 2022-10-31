@@ -11,7 +11,8 @@ Before 2nd step you must ensure that metrics server is installed and active in y
 ```commandline
 kubectl get po -n kube-system | grep metric
 ```
-Then you need to install a tool to produce stress on your pod:
+
+### Step 3: Set autoscale
 ```commandline
-sh -c "$(curl -Lfs https://downloads.speedscale.com/speedctl/install)"
+kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=15 -n autoscale-test
 ```
