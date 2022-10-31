@@ -29,6 +29,11 @@ Using 100 threads and 100 connections
 ```
 wrk -t100 -c100 http://SERVER_IP:PORT
 ```
+### Demo 3:
+Using 500 threads and 500 connections for 1000 seconds
+```
+wrk -t500 -c500 -d1000 http://SERVER_IP:PORT
+```
 
 ### References:
 - [wrk - modern HTTP benchmarking tool](https://www.youtube.com/watch?v=idJIVvSDPrk)
