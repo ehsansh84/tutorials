@@ -23,9 +23,27 @@ Check if metrics-server installed:
 kubectl get po -n kube-system | grep metric
 ```
 Install if necessary:
+#### Method 1:
 ```commandline
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 ```
+You may face an error in metrics-server logs like `kubernetes metrics x509: cannot validate certificate for`, 
+in this case you should add `- --kubelet-insecure-tls` to `args` section like:
+```yaml
+args:
+- --cert-dir=/tmp
+- --secure-port=4443
+- --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+- --kubelet-use-node-status-port
+- --kubelet-insecure-tls
+```
+It is done for you in `metrics-deploy.yaml` in this directory.
+#### Method 2: helm
+```commandline
+helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+helm upgrade --install metrics-server metrics-server/metrics-server
+```
+
 > The Cluster Autoscaler doesn't look at memory or CPU available when it triggers the autoscaling.  
 Instead, the Cluster Autoscaler reacts to events and checks for any unschedulable Pods every 10 seconds.
 ### How Auto scaler selects node type?
@@ -61,5 +79,5 @@ At worse, it takes about 7 minutes.
 - [Kubernetes Metrics Server](https://kubernetes-sigs.github.io/metrics-server/)
 - [How the Cluster Autoscaler works in Kubernetes](https://learnk8s.io/kubernetes-autoscaling-strategies#how-the-cluster-autoscaler-works-in-kubernetes)
 - [kube-fledged](https://github.com/senthilrch/kube-fledged)
-- []()
+- [ metrics-server error because it doesn't contain any IP SANs #196 ](https://github.com/kubernetes-sigs/metrics-server/issues/196)
 - []()
