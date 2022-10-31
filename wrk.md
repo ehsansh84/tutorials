@@ -17,3 +17,7 @@ apt install make
 apt install unzip
 apt install gcc
 ```
+
+
+### References:
+- [wrk - modern HTTP benchmarking tool](https://www.youtube.com/watch?v=idJIVvSDPrk)
