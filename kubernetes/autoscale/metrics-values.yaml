@@ -1,0 +1,5 @@
+image:
+  repository: registry.greenwebplus.com/public/metrics-server
+  tag: v0.6.1
+apiService:
+  insecureSkipTLSVerify: true
