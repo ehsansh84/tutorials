@@ -18,6 +18,17 @@ apt install unzip
 apt install gcc
 ```
 
+### Now demos:
+#### Demo 1:
+By default 2 threads and 10 connections
+```
+wrk http://SERVER_IP:PORT
+```
+### Demo 2:
+Using 100 threads and 100 connections
+```
+wrk -t100 -c100 http://SERVER_IP:PORT
+```
 
 ### References:
 - [wrk - modern HTTP benchmarking tool](https://www.youtube.com/watch?v=idJIVvSDPrk)
