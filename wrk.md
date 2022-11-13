@@ -15,7 +15,7 @@ In case you do not have necessary tools, you may need to install:
 ```
 apt install make
 apt install unzip
-apt install gcc
+apt install -y gcc
 ```
 
 ### Now demos:
