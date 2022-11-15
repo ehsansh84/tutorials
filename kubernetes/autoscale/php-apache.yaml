@@ -17,6 +17,7 @@ spec:
      - name: php-apache
 #       image: k8s.gcr.io/hpa-example
        image: registry.greenwebplus.com/admin-kubernetes/hpa-example
+       imagePullPolicy: "IfNotPresent"
        ports:
        - containerPort: 80
        resources:
