@@ -79,5 +79,5 @@ At worse, it takes about 7 minutes.
 - [Kubernetes Metrics Server](https://kubernetes-sigs.github.io/metrics-server/)
 - [How the Cluster Autoscaler works in Kubernetes](https://learnk8s.io/kubernetes-autoscaling-strategies#how-the-cluster-autoscaler-works-in-kubernetes)
 - [kube-fledged](https://github.com/senthilrch/kube-fledged)
-- [ metrics-server error because it doesn't contain any IP SANs #196 ](https://github.com/kubernetes-sigs/metrics-server/issues/196)
+- [metrics-server error because it doesn't contain any IP SANs #196](https://github.com/kubernetes-sigs/metrics-server/issues/196)
 - []()
