@@ -27,7 +27,13 @@ You can run your project using python instead of unicorn using this code:
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8100)
 ```
-You can also change default port using above command.
+You can also change default port using above command.  
+If you make a GET request to `http://127.0.0.1:8000` You will see:
+```json
+{"message": "Hello World"}
+```
+In the meantime you can see documentation that automatically prepared here: `http://127.0.0.1:8000/docs`
+
 
 ### References:
 - [First Steps¶](https://fastapi.tiangolo.com/tutorial/first-steps/)
