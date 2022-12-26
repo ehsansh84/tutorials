@@ -17,7 +17,7 @@ from contextlib import suppress
 with suppress(ZeroDivisionError):
     a = 10 / x
 ```
-
+You can see the examples in `suppress.py`
 
 # References:
 - [Suppress Exceptions in Python](https://www.pythonforbeginners.com/basics/suppress-exceptions-in-python)
