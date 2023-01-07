@@ -140,6 +140,8 @@ You can even remove * if all test files start with test_ like this:
 pytest --tb=no
 ```
 
+ُ#TODO: Page 35 output types
+
 
 
 ### References:
