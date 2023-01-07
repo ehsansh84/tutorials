@@ -139,6 +139,11 @@ You can even remove * if all test files start with test_ like this:
 ```python
 pytest --tb=no
 ```
+Another way to run tests is to use a partial name of file using `-k`:
+```python
+pytest -k 02
+```
+
 
 ُ#TODO: Page 35 output types
 
