@@ -143,6 +143,10 @@ Another way to run tests is to use a partial name of file using `-k`:
 ```python
 pytest -k 02
 ```
+If for some reason you used `print` command in your tests, you must use `-s` to see them in the result.
+```python
+pytest -k 02 -s
+```
 
 
 ُ#TODO: Page 35 output types
