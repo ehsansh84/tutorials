@@ -47,7 +47,7 @@ It has two arguments:
 - Iterable specifies a data collection or a sequence to which a function will be applied.
 
 ### References:
-- [Senior Python Developer interview questions and answers](https://resources.workable.com/senior-python-developer-interview-questions)
+- [Senior Python Developer interview questions and answers](https://resources.workable.com/senior-python-developer-interview-questions)
 - [10 Python Interview Questions for Senior Developers](https://medium.com/techtofreedom/10-python-interview-questions-for-senior-developers-4fefe773719a)
 - [25 Python Developer Interview Questions to Ask Junior, Middle, and Senior Programmers](https://bridgeteams.com/blog/25-python-developer-interview-questions-to-ask-junior-middle-and-senior-programmers/)
-- []()
+- [Senior Python Developer Interview Questions](https://breezy.hr/resources/interview-questions/senior-python-developer)
