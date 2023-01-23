@@ -72,6 +72,123 @@ Taints:             node-role.kubernetes.io/master:NoSchedule
 ......
 ```
 
+
+
+
+
+### Step 4 - Create a secret with the cloud-config for the openstack cloud provider:
+```commandline
+kubectl create secret -n kube-system generic cloud-config --from-literal=cloud.conf="$(cat /etc/kubernetes/cloud-config)" --dry-run -o yaml > cloud-config-secret.yaml
+kubectl apply -f cloud-config-secret.yaml 
+```
+### Step 5 - Get the CA certificate for OpenStack API endpoints and put that into `/etc/kubernetes/ca.pem`
+
+### Step 6: Create RBAC resources:
+```commandline
+kubectl apply -f https://github.com/kubernetes/cloud-provider-openstack/raw/release-1.15/cluster/addons/rbac/cloud-controller-manager-roles.yaml
+kubectl apply -f https://github.com/kubernetes/cloud-provider-openstack/raw/release-1.15/cluster/addons/rbac/cloud-controller-manager-role-bindings.yaml
+```
+
+### Step 7:
+We'll run the OpenStack cloud controller manager as a DaemonSet rather than a pod. The manager will only run on the
+control-plane node, so if there are multiple control-plane nodes, multiple pods will be run for high availability.
+Create `openstack-cloud-controller-manager-ds.yaml` containing the following manifests, then apply it.
+
+### Step 8:
+```yaml
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cloud-controller-manager
+  namespace: kube-system
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: openstack-cloud-controller-manager
+  namespace: kube-system
+  labels:
+    k8s-app: openstack-cloud-controller-manager
+spec:
+  selector:
+    matchLabels:
+      k8s-app: openstack-cloud-controller-manager
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        k8s-app: openstack-cloud-controller-manager
+    spec:
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+      securityContext:
+        runAsUser: 1001
+      tolerations:
+      - key: node.cloudprovider.kubernetes.io/uninitialized
+        value: "true"
+        effect: NoSchedule
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      - effect: NoSchedule
+        key: node.kubernetes.io/not-ready
+      serviceAccountName: cloud-controller-manager
+      containers:
+        - name: openstack-cloud-controller-manager
+          image: docker.io/k8scloudprovider/openstack-cloud-controller-manager:v1.15.0
+          args:
+            - /bin/openstack-cloud-controller-manager
+            - --v=1
+            - --cloud-config=$(CLOUD_CONFIG)
+            - --cloud-provider=openstack
+            - --use-service-account-credentials=true
+            - --address=127.0.0.1
+          volumeMounts:
+            - mountPath: /etc/kubernetes/pki
+              name: k8s-certs
+              readOnly: true
+            - mountPath: /etc/ssl/certs
+              name: ca-certs
+              readOnly: true
+            - mountPath: /etc/config
+              name: cloud-config-volume
+              readOnly: true
+            - mountPath: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
+              name: flexvolume-dir
+            - mountPath: /etc/kubernetes
+              name: ca-cert
+              readOnly: true
+          resources:
+            requests:
+              cpu: 200m
+          env:
+            - name: CLOUD_CONFIG
+              value: /etc/config/cloud.conf
+      hostNetwork: true
+      volumes:
+      - hostPath:
+          path: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
+          type: DirectoryOrCreate
+        name: flexvolume-dir
+      - hostPath:
+          path: /etc/kubernetes/pki
+          type: DirectoryOrCreate
+        name: k8s-certs
+      - hostPath:
+          path: /etc/ssl/certs
+          type: DirectoryOrCreate
+        name: ca-certs
+      - name: cloud-config-volume
+        secret:
+          secretName: cloud-config
+      - name: ca-cert
+        secret:
+          secretName: openstack-ca-cert
+```
+
+
+
 ### References:
 - [Deploying External OpenStack Cloud Provider with Kubeadm](https://kubernetes.io/blog/2020/02/07/deploying-external-openstack-cloud-provider-with-kubeadm/)
 - []()
