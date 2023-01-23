@@ -1,5 +1,5 @@
 # Senior Python developer interview questions
-### How To Avoid Nested Loops?
+### Q01-How To Avoid Nested Loops?
 The following program uses nested loops, which may be not readable enough. How will you optimise it?
 ```python
 list_a = [1, 2020, 70]
