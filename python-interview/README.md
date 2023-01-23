@@ -30,8 +30,24 @@ for a, b, c in product(list_a, list_b, list_c):
 
 
 
+### Q02: Uses of Eval Functions
+Can you implement a function in one line of Python code, which will receive two numbers a and b and a string op.
+The op stands for an arithmetic operator, such as `+`, `-`, `*` and `/`. Your function needs to return the
+calculated result of a op b.
+
+Answer:
+```python
+def cal(a, b, op): return eval(f’{a} {op} {b}’)
+```
+
+### Q03: What is the use of the map function in Python?
+The map() function helps execute a function for all items in the iterated object (list, dictionary, set, or tuple).
+It has two arguments:
+- Function specifies a function that will be executed on each object.
+- Iterable specifies a data collection or a sequence to which a function will be applied.
+
 ### References:
 - [Senior Python Developer interview questions and answers](https://resources.workable.com/senior-python-developer-interview-questions)
 - [10 Python Interview Questions for Senior Developers](https://medium.com/techtofreedom/10-python-interview-questions-for-senior-developers-4fefe773719a)
-- []()
+- [25 Python Developer Interview Questions to Ask Junior, Middle, and Senior Programmers](https://bridgeteams.com/blog/25-python-developer-interview-questions-to-ask-junior-middle-and-senior-programmers/)
 - []()
