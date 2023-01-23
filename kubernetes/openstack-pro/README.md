@@ -186,7 +186,52 @@ spec:
         secret:
           secretName: openstack-ca-cert
 ```
+When the controller manager is running, it will query OpenStack to get information about the nodes and remove the taint.
+In the node info you'll see the VM's UUID in OpenStack.
+```commandline
+$ kubectl describe no master1
+Name:               master1
+Roles:              master
+......
+Taints:             node-role.kubernetes.io/master:NoSchedule
+                    node.kubernetes.io/not-ready:NoSchedule
+......
+sage:docker: network plugin is not ready: cni config uninitialized
+......
+PodCIDR:                     10.224.0.0/24
+ProviderID:                  openstack:///548e3c46-2477-4ce2-968b-3de1314560a5
+```
+### Step 8: Install your favourite CNI and the control-plane node will become ready.
+For me it is weave. I already configured in `net.yaml`. so:
+```commandline
+kubectl apply -f net.yaml
+```
 
+### Step 9: Now setup workers:
+Get a token from master
+```commandline
+kubeadm token create --print-join-command
+```
+
+### Step 10: Create `kubeadm-config.yml` for worker nodes with the above token and ca cert hash.
+```yaml
+apiVersion: kubeadm.k8s.io/v1beta2
+discovery:
+  bootstrapToken:
+    apiServerEndpoint: 192.168.1.7:6443
+    token: 0c0z4p.dnafh6vnmouus569
+    caCertHashes: ["sha256:fcb3e956a6880c05fc9d09714424b827f57a6fdc8afc44497180905946527adf"]
+kind: JoinConfiguration
+nodeRegistration:
+  kubeletExtraArgs:
+    cloud-provider: "external"
+```
+apiServerEndpoint is the control-plane node, token and caCertHashes can be taken from the join command printed in the
+output of 'kubeadm token create' command.
+Run this command on workers to join:
+```commandline
+kubeadm join  --config kubeadm-config.yml 
+```
 
 
 ### References:
