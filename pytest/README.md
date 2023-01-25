@@ -11,6 +11,10 @@ To run this test, install `pytest`:
 ```commandline
 pip install pytest
 ```
+If you want to use `mocker` object you need to install `pytest-mock`:
+```python
+pip install pytest-mock
+```
 Now you can run the test above using:
 ```commandline
 pytest test_01.py
