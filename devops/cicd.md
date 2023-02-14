@@ -17,8 +17,29 @@ Amazon delivers a new commit each 11 seconds!
 - **Continuous deployment**:
 > - A software engineering process
 > - Product functionalities are delivered using automatic deployment.
-> - Helps testers to validate whether the codebase changes are correct, and it is stable or not.
+> - Helps testers to validate whether the codebase changes are correct, and it is stable or not.  
 
+
+| Source   | Build        | Test        | Deploy     |
+|----------|--------------|-------------|------------|
+| Git push | Compile      | Unit        | Staging    |
+|          | Docker build | Integration | QA         |
+|          | Docker build | Integration | E2E tests  |
+|          |              | Smoke       | Production |
+
+## Benefits of using CI CD tools
+- Isolation of Faults
+- A shorter time to resolution
+- Increased Test Reliability
+- Increased Release Rate
+- Reduce expenses
+- Updates and maintenance are easy
+
+### Some CICD tools:
+- Git
+- Gitlab / Github
+- Gitlab CI / Github actions
 
 #### References: 
 - [CI/CD Pipeline: Learn with Example](https://www.guru99.com/ci-cd-pipeline.html)
+- [Benefits of using CI CD tools](https://www.browserstack.com/guide/top-ci-cd-tools)
