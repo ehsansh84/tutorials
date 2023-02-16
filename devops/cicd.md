@@ -24,8 +24,8 @@ Amazon delivers a new commit each 11 seconds!
 |----------|--------------|-------------|------------|
 | Git push | Compile      | Unit        | Staging    |
 |          | Docker build | Integration | QA         |
-|          | Docker build | Integration | E2E tests  |
-|          |              | Smoke       | Production |
+|          | Docker build | Smoke       | E2E tests  |
+|          |              | Static      | Production |
 
 ## Benefits of using CI CD tools
 - Isolation of Faults
@@ -39,6 +39,7 @@ Amazon delivers a new commit each 11 seconds!
 - Git
 - Gitlab / Github
 - Gitlab CI / Github actions
+- Jenkins / ArgoCD
 
 #### References: 
 - [CI/CD Pipeline: Learn with Example](https://www.guru99.com/ci-cd-pipeline.html)
