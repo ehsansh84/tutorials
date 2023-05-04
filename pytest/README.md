@@ -151,8 +151,10 @@ If for some reason you used `print` command in your tests, you must use `-s` to 
 ```python
 pytest -k 02 -s
 ```
-
-
+In case you see warnings for deprecated libraries you can ignore them:
+```commandline
+pytest test.py -W ignore::DeprecationWarning
+```
 ُ#TODO: Page 35 output types
 
 
